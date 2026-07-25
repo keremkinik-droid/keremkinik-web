@@ -58,8 +58,11 @@ collections:
             fields:
               - { label: "Toplam Yayın", name: "yayin", widget: "number" }
               - { label: "WoS Yayın", name: "wos_yayin", widget: "number" }
-              - { label: "Atıf", name: "atif", widget: "number" }
-              - { label: "H-Endeksi", name: "h_endeks", widget: "number" }
+              - { label: "Atıf (Google Scholar)", name: "atif", widget: "number" }
+              - { label: "H-Endeksi (Google Scholar)", name: "h_endeks", widget: "number" }
+              - { label: "i10-Endeksi (Google Scholar)", name: "i10_endeks", widget: "number" }
+              - { label: "Atıf (WoS)", name: "atif_wos", widget: "number" }
+              - { label: "H-Endeksi (WoS)", name: "h_endeks_wos", widget: "number" }
               - { label: "Takipçi (metin)", name: "takipci", widget: "string" }
           - label: "Sosyal Medya Bağlantıları"
             name: "sosyal"
@@ -71,6 +74,7 @@ collections:
               - { label: "Instagram", name: "instagram", widget: "string" }
               - { label: "Facebook", name: "facebook", widget: "string" }
               - { label: "LinkedIn", name: "linkedin", widget: "string" }
+              - { label: "Google Scholar", name: "scholar", widget: "string" }
               - { label: "ORCID", name: "orcid", widget: "string" }
               - { label: "Web of Science", name: "wos", widget: "string" }
               - { label: "Scopus", name: "scopus", widget: "string" }
