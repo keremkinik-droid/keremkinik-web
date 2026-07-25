@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../data/site.json';
+import { getLatestVideos } from '../../lib/youtube.js';
+const videos = await getLatestVideos(12);
+const uploadsList = 'UU' + site.sosyal.youtube_kanal_id.slice(2);
+---
+<Layout lang="en" path="/en/videos/" title="Videos">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Home / Videos</p>
+      <h1>Videos</h1>
+      <p>Talks, interviews and field footage — fed automatically from my YouTube channel.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      {videos.length > 0 ? (
+        <div class="video-grid">
+          {videos.map((v) => (
+            <div>
+              <iframe class="video-frame" src={`https://www.youtube.com/embed/${v.id}`} title={v.title} loading="lazy" allowfullscreen></iframe>
+              <p style="font-weight:600; font-size:.92rem; margin-top:10px;">{v.title}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <iframe class="video-frame" src={`https://www.youtube.com/embed/videoseries?list=${uploadsList}`} title="YouTube channel" loading="lazy" allowfullscreen></iframe>
+      )}
+      <div style="text-align:center; margin-top: 40px;">
+        <a class="btn btn-red" href={site.sosyal.youtube} target="_blank" rel="noopener">Visit YouTube Channel ▶</a>
+      </div>
+    </div>
+  </section>
+</Layout>

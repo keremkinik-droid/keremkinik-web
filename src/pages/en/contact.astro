@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../data/site.json';
+---
+<Layout lang="en" path="/en/contact/" title="Contact">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Home / Contact</p>
+      <h1>Contact</h1>
+      <p>For academic collaboration, speaking invitations, media and other enquiries.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <div class="row">📧 <a href={`mailto:${site.eposta}`}>{site.eposta}</a></div>
+          <div class="row">📍 Istanbul, Türkiye</div>
+          <div class="row">🏛 University of Health Sciences — Disaster Medicine</div>
+          <h3 style="margin-top:28px;">Social Media</h3>
+          <div class="row">𝕏 <a href={site.sosyal.x} target="_blank" rel="noopener">@drkerem</a></div>
+          <div class="row">▶ <a href={site.sosyal.youtube} target="_blank" rel="noopener">@drkeremk</a></div>
+          <div class="row">◎ <a href={site.sosyal.instagram} target="_blank" rel="noopener">@drkeremkinik</a></div>
+          <div class="row">in <a href={site.sosyal.linkedin} target="_blank" rel="noopener">drkeremkinik</a></div>
+        </div>
+        <div>
+          <form class="contact" name="contact-en" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact-en" />
+            <p style="display:none;"><label>Skip: <input name="bot-field" /></label></p>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            <button type="submit" class="btn btn-red">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

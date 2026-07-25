@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPosts, KATEGORILER, fmtDate } from '../../lib/posts.js';
+const posts = getPosts();
+---
+<Layout lang="en" path="/en/posts/" title="Posts">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Home / Posts</p>
+      <h1>Articles, Reflections & News</h1>
+      <p>On humanitarian action, disaster management, global health and current affairs.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-3">
+        {posts.map((p) => (
+          <article class="card">
+            {p.kapak && <img class="thumb" src={p.kapak} alt={p.baslik} loading="lazy" />}
+            <div class="body">
+              <span class="tag">{KATEGORILER.en[p.kategori] || 'Post'}{p.dil === 'tr' ? ' · TR' : ''}</span>
+              <h3><a href={`/yazilar/${p.slug}/`}>{p.baslik}</a></h3>
+              <p class="excerpt">{p.ozet}</p>
+              <span class="meta">{fmtDate(p.tarih, 'en')}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

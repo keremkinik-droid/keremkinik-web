@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../data/site.json';
+import galeri from '../../data/galeri.json';
+import { getPosts, KATEGORILER, fmtDate } from '../../lib/posts.js';
+import { getLatestVideos } from '../../lib/youtube.js';
+
+const posts = getPosts().slice(0, 3);
+const videos = await getLatestVideos(3);
+const fotolar = galeri.fotograflar.slice(0, 6);
+---
+<Layout lang="en" path="/en/" title="Home">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Physician · Academician · Humanitarian Leader</p>
+        <h1>Assoc. Prof.<br />Kerem Kınık, MD</h1>
+        <p class="titles">{site.kisa_bio_en}</p>
+        <p class="slogan">“{site.slogan_en}”</p>
+        <div class="cta">
+          <a href="/en/biography/" class="btn btn-red">Biography</a>
+          <a href="/en/publications/" class="btn btn-ghost">Publications</a>
+          <a href="/en/contact/" class="btn btn-ghost">Contact</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src={site.portre} alt="Assoc. Prof. Kerem Kınık" loading="eager" />
+        <div class="badge">Turkish Red Crescent <span>33rd President</span> (2016–2023)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="wrap">
+      <div><div class="num">{site.metrikler.yayin}</div><div class="lbl">Publications</div></div>
+      <div><div class="num">{site.metrikler.atif}+</div><div class="lbl">Citations (WoS)</div></div>
+      <div><div class="num">{site.metrikler.h_endeks}</div><div class="lbl">H-Index</div></div>
+      <div><div class="num">30+</div><div class="lbl">Countries Served</div></div>
+      <div><div class="num">{site.metrikler.takipci}</div><div class="lbl">Social Followers</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Latest Posts<span class="dot">.</span></h2>
+        <a class="more" href="/en/posts/">View All →</a>
+      </div>
+      <div class="grid-3">
+        {posts.map((p) => (
+          <article class="card">
+            {p.kapak && <img class="thumb" src={p.kapak} alt={p.baslik} loading="lazy" />}
+            <div class="body">
+              <span class="tag">{KATEGORILER.en[p.kategori] || 'Post'}{p.dil === 'tr' ? ' · TR' : ''}</span>
+              <h3><a href={`/yazilar/${p.slug}/`}>{p.baslik}</a></h3>
+              <p class="excerpt">{p.ozet}</p>
+              <span class="meta">{fmtDate(p.tarih, 'en')}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Videos<span class="dot">.</span></h2>
+        <a class="more" href="/en/videos/">All Videos →</a>
+      </div>
+      <p class="sec-sub">Latest from my YouTube channel — updates automatically.</p>
+      <div class="video-grid">
+        {videos.length > 0 ? videos.map((v) => (
+          <div>
+            <iframe class="video-frame" src={`https://www.youtube.com/embed/${v.id}`} title={v.title} loading="lazy" allowfullscreen></iframe>
+            <p style="font-weight:600; font-size:.92rem; margin-top:10px;">{v.title}</p>
+          </div>
+        )) : (
+          <iframe class="video-frame" style="grid-column: 1 / -1;" src={`https://www.youtube.com/embed/videoseries?list=UU${site.sosyal.youtube_kanal_id.slice(2)}`} title="YouTube" loading="lazy" allowfullscreen></iframe>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Social Media<span class="dot">.</span></h2>
+      </div>
+      <div class="grid-2">
+        <div class="social-cards" style="grid-template-columns: 1fr;">
+          <a class="social-card" href={site.sosyal.x} target="_blank" rel="noopener">
+            <span class="icon">𝕏</span>
+            <h3>X (Twitter)</h3>
+            <p>Insights, articles and field notes</p>
+            <span class="handle">@drkerem · 171.7K followers</span>
+          </a>
+          <a class="social-card" href={site.sosyal.instagram} target="_blank" rel="noopener">
+            <span class="icon">◎</span>
+            <h3>Instagram</h3>
+            <p>Humanitarian and academic life in photos</p>
+            <span class="handle">@drkeremkinik</span>
+          </a>
+          <a class="social-card" href={site.sosyal.linkedin} target="_blank" rel="noopener">
+            <span class="icon">in</span>
+            <h3>LinkedIn</h3>
+            <p>Professional network and academic updates</p>
+            <span class="handle">drkeremkinik</span>
+          </a>
+        </div>
+        <div class="card" style="padding: 10px; max-height: 640px; overflow: hidden;">
+          <a class="twitter-timeline" data-height="620" data-dnt="true" href="https://twitter.com/drkerem">Loading posts… @drkerem</a>
+          <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Gallery<span class="dot">.</span></h2>
+        <a class="more" href="/en/gallery/">All Photos →</a>
+      </div>
+      <div class="masonry">
+        {fotolar.map((f) => (
+          <figure>
+            <img src={f.gorsel} alt={f.baslik_en} loading="lazy" />
+            <figcaption>{f.baslik_en}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

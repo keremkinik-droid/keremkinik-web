@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../data/site.json';
+---
+<Layout lang="en" path="/en/biography/" title="Biography">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Home / Biography</p>
+      <h1>Biography</h1>
+      <p>A life spanning medicine, humanitarian diplomacy, the field and academia.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-2" style="align-items:start;">
+        <div class="prose" style="margin:0;">
+          <p><strong>Assoc. Prof. Kerem Kınık, MD</strong> was born in 1970 in Malatya, Türkiye. He graduated from Istanbul University Faculty of Medicine in 1993 and earned his PhD in Disaster Medicine from Bezmialem Vakıf University. He currently serves as Head of the Department of Emergency Aid & Disaster Management and the Department of Disaster Medicine at the University of Health Sciences, Istanbul.</p>
+          <p>He held administrative roles at the Ministry of Health and the Istanbul Metropolitan Municipality, served on the Istanbul Provincial Council as Chairman of the Health Committee, and represented Istanbul at the Assembly of European Regions' Committee for Social Policy and Public Health.</p>
+          <p>His humanitarian journey began with volunteering during his student years. He served as a volunteer physician during the Kosovo War and the 1999 Marmara Earthquake. As President of Doctors Worldwide Türkiye, he led humanitarian operations in the Democratic Republic of Congo, Somalia, Palestine, the Central African Republic, Niger, Kenya, Yemen, Sudan, Pakistan and Uganda, among others.</p>
+          <p>Having joined the Turkish Red Crescent as a volunteer in 2004, he was elected Vice President in 2015 and President in 2016 — the 33rd President in the organisation's history — serving until 2023. Under his leadership, the Turkish Red Crescent underwent a comprehensive transformation in governance, strategy and internationalisation.</p>
+          <p>In 2017, at the 21st Session of the IFRC General Assembly in Antalya, he was elected Vice President of the International Federation of Red Cross and Red Crescent Societies for Europe and Central Asia (2017–2022). He is also a Trustee of the Green Crescent Foundation, working on addiction prevention and public health.</p>
+          <p>He has authored numerous book chapters and articles on disaster medicine, humanitarian aid, migration policy, development, international humanitarian law and humanitarian diplomacy. A songwriter and amateur musician, he speaks English and intermediate Arabic. He is a father of three and grandfather of four.</p>
+        </div>
+        <div>
+          <img src={site.portre} alt="Assoc. Prof. Kerem Kınık" style="border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 40px;" />
+          <div class="timeline">
+            <div class="item">
+              <span class="years">2024 – Present</span>
+              <h3>PhD (Public Health)</h3>
+              <p>University of Health Sciences</p>
+            </div>
+            <div class="item">
+              <span class="years">2017 – Present</span>
+              <h3>Head of Department</h3>
+              <p>UHS — Emergency & Disaster Management, Disaster Medicine</p>
+            </div>
+            <div class="item">
+              <span class="years">2016 – 2023</span>
+              <h3>President, Turkish Red Crescent</h3>
+              <p>33rd President of the Hilal-i Ahmer</p>
+            </div>
+            <div class="item">
+              <span class="years">2017 – 2022</span>
+              <h3>Vice President, IFRC</h3>
+              <p>Europe & Central Asia — Geneva</p>
+            </div>
+            <div class="item">
+              <span class="years">2015 – 2019</span>
+              <h3>PhD (Disaster Medicine)</h3>
+              <p>Bezmialem Vakıf University</p>
+            </div>
+            <div class="item">
+              <span class="years">2013 – Present</span>
+              <h3>Trustee, Green Crescent Foundation</h3>
+              <p>Addiction prevention & public health</p>
+            </div>
+            <div class="item">
+              <span class="years">2001 – Present</span>
+              <h3>Doctors Worldwide Türkiye</h3>
+              <p>President & volunteer physician — missions in 30+ countries</p>
+            </div>
+            <div class="item">
+              <span class="years">1987 – 1993</span>
+              <h3>Doctor of Medicine</h3>
+              <p>Istanbul University Faculty of Medicine</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

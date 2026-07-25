@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import galeri from '../../data/galeri.json';
+---
+<Layout lang="en" path="/en/gallery/" title="Gallery">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Home / Gallery</p>
+      <h1>Photo Gallery</h1>
+      <p>Moments from the field, congresses and humanitarian operations.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="masonry">
+        {galeri.fotograflar.map((f) => (
+          <figure>
+            <img src={f.gorsel} alt={f.baslik_en} loading="lazy" />
+            <figcaption>{f.baslik_en}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
