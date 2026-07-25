@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPosts, KATEGORILER, fmtDate } from '../../lib/posts.js';
+
+export function getStaticPaths() {
+  return getPosts().map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = post;
+---
+<Layout lang="tr" path="/yazilar/" title={post.baslik} description={post.ozet}>
+  <section class="section">
+    <div class="wrap">
+      <div class="article-hero">
+        <span class="tag">{KATEGORILER.tr[post.kategori] || 'Yazı'}</span>
+        <h1>{post.baslik}</h1>
+        <p class="meta">Kerem Kınık · {fmtDate(post.tarih)}</p>
+        {post.kapak && <img class="cover" src={post.kapak} alt={post.baslik} />}
+      </div>
+      <div class="prose">
+        <Content />
+      </div>
+      <div style="max-width:760px; margin: 48px auto 0; display:flex; gap:14px;">
+        <a href="/yazilar/" class="btn btn-outline">← Tüm Yazılar</a>
+      </div>
+    </div>
+  </section>
+</Layout>

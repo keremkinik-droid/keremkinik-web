@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPosts, KATEGORILER, fmtDate } from '../../lib/posts.js';
+const posts = getPosts();
+---
+<Layout lang="tr" path="/yazilar/" title="Yazılar">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / Yazılar</p>
+      <h1>Makaleler, Düşünceler ve Haberler</h1>
+      <p>İnsani yardım, afet yönetimi, küresel sağlık ve güncel gelişmeler üzerine.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="chips" id="chips">
+        <button class="chip active" data-f="all">Tümü</button>
+        <button class="chip" data-f="makale">Makaleler</button>
+        <button class="chip" data-f="dusunce">Düşünceler</button>
+        <button class="chip" data-f="haber">Haberler</button>
+      </div>
+      <div class="grid-3" id="post-grid">
+        {posts.map((p) => (
+          <article class="card" data-kategori={p.kategori}>
+            {p.kapak && <img class="thumb" src={p.kapak} alt={p.baslik} loading="lazy" />}
+            <div class="body">
+              <span class="tag">{KATEGORILER.tr[p.kategori] || 'Yazı'}{p.dil === 'en' ? ' · EN' : ''}</span>
+              <h3><a href={`/yazilar/${p.slug}/`}>{p.baslik}</a></h3>
+              <p class="excerpt">{p.ozet}</p>
+              <span class="meta">{fmtDate(p.tarih)}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('#chips .chip').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#chips .chip').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.f;
+        document.querySelectorAll('#post-grid .card').forEach((c) => {
+          c.style.display = (f === 'all' || c.dataset.kategori === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</Layout>
