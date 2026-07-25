@@ -1,0 +1,110 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: tr
+site_url: https://keremkinik.netlify.app
+display_url: https://keremkinik.netlify.app
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "yazilar"
+    label: "Yazılar (Makale / Düşünce / Haber)"
+    folder: "src/content/yazilar"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "baslik", widget: "string" }
+      - { label: "Tarih", name: "tarih", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+      - label: "Kategori"
+        name: "kategori"
+        widget: "select"
+        options:
+          - { label: "Makale", value: "makale" }
+          - { label: "Kişisel Düşünce", value: "dusunce" }
+          - { label: "Haber", value: "haber" }
+      - label: "Dil"
+        name: "dil"
+        widget: "select"
+        default: "tr"
+        options:
+          - { label: "Türkçe", value: "tr" }
+          - { label: "English", value: "en" }
+      - { label: "Özet", name: "ozet", widget: "text", hint: "Kartlarda görünen 1-2 cümlelik özet" }
+      - { label: "Kapak Görseli", name: "kapak", widget: "image", required: false, allow_multiple: false }
+      - { label: "İçerik", name: "body", widget: "markdown" }
+
+  - name: "veriler"
+    label: "Site Verileri"
+    files:
+      - label: "Genel Ayarlar (kimlik, sosyal medya, metrikler)"
+        name: "site"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Ad Soyad", name: "ad", widget: "string" }
+          - { label: "Unvan (TR)", name: "unvan_tr", widget: "string" }
+          - { label: "Unvan (EN)", name: "unvan_en", widget: "string" }
+          - { label: "Slogan (TR)", name: "slogan_tr", widget: "string" }
+          - { label: "Slogan (EN)", name: "slogan_en", widget: "string" }
+          - { label: "Kısa Biyografi (TR)", name: "kisa_bio_tr", widget: "text" }
+          - { label: "Kısa Biyografi (EN)", name: "kisa_bio_en", widget: "text" }
+          - { label: "E-posta", name: "eposta", widget: "string" }
+          - { label: "Konum", name: "konum", widget: "string" }
+          - { label: "Portre Fotoğrafı", name: "portre", widget: "string", hint: "Görsel URL'si veya /images/... yolu" }
+          - label: "Metrikler"
+            name: "metrikler"
+            widget: "object"
+            fields:
+              - { label: "Toplam Yayın", name: "yayin", widget: "number" }
+              - { label: "WoS Yayın", name: "wos_yayin", widget: "number" }
+              - { label: "Atıf", name: "atif", widget: "number" }
+              - { label: "H-Endeksi", name: "h_endeks", widget: "number" }
+              - { label: "Takipçi (metin)", name: "takipci", widget: "string" }
+          - label: "Sosyal Medya Bağlantıları"
+            name: "sosyal"
+            widget: "object"
+            fields:
+              - { label: "X (Twitter)", name: "x", widget: "string" }
+              - { label: "YouTube", name: "youtube", widget: "string" }
+              - { label: "YouTube Kanal ID", name: "youtube_kanal_id", widget: "string", hint: "UC ile başlayan kanal kimliği — video akışı bununla otomatik çekilir" }
+              - { label: "Instagram", name: "instagram", widget: "string" }
+              - { label: "Facebook", name: "facebook", widget: "string" }
+              - { label: "LinkedIn", name: "linkedin", widget: "string" }
+              - { label: "ORCID", name: "orcid", widget: "string" }
+              - { label: "Web of Science", name: "wos", widget: "string" }
+              - { label: "Scopus", name: "scopus", widget: "string" }
+              - { label: "YÖK Akademik", name: "yok", widget: "string" }
+
+      - label: "Bilimsel Yayınlar"
+        name: "yayinlar"
+        file: "src/data/yayinlar.json"
+        fields:
+          - label: "Yayınlar"
+            name: "yayinlar"
+            widget: "list"
+            summary: "{{fields.yil}} — {{fields.baslik}}"
+            fields:
+              - { label: "Yıl", name: "yil", widget: "number" }
+              - { label: "Başlık", name: "baslik", widget: "string" }
+              - { label: "Dergi / Kitap", name: "dergi", widget: "string" }
+              - { label: "Yazarlar", name: "yazarlar", widget: "string" }
+              - { label: "DOI", name: "doi", widget: "string", required: false, hint: "Örn: 10.1017/dmp.2025.1 (https://doi.org/ olmadan)" }
+              - label: "Tür"
+                name: "tur"
+                widget: "select"
+                default: "Makale"
+                options: ["Makale", "Kitap Bölümü", "Editöre Mektup", "Bildiri", "Kitap"]
+
+      - label: "Fotoğraf Galerisi"
+        name: "galeri"
+        file: "src/data/galeri.json"
+        fields:
+          - label: "Fotoğraflar"
+            name: "fotograflar"
+            widget: "list"
+            summary: "{{fields.baslik_tr}}"
+            fields:
+              - { label: "Görsel", name: "gorsel", widget: "image" }
+              - { label: "Başlık (TR)", name: "baslik_tr", widget: "string" }
+              - { label: "Başlık (EN)", name: "baslik_en", widget: "string" }
