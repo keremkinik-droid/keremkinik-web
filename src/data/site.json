@@ -1,4 +1,14 @@
 {
+  "ad": "Doç. Dr. Kerem Kınık",
+  "unvan_tr": "Hekim · Akademisyen · İnsani Yardım Lideri",
+  "unvan_en": "Physician · Academician · Humanitarian Leader",
+  "slogan_tr": "Ya bir yol buluruz, ya bir yol yaparız.",
+  "slogan_en": "We either find a way, or make one.",
+  "kisa_bio_tr": "Sağlık Bilimleri Üniversitesi Afet Tıbbı Anabilim Dalı Başkanı, Türk Kızılay 33. Genel Başkanı (2016–2023), IFRC Avrupa ve Orta Asya eski Başkan Vekili. Afet tıbbı, insani diplomasi ve küresel sağlık alanında araştırmacı ve yazar.",
+  "kisa_bio_en": "Head of Disaster Medicine at the University of Health Sciences, 33rd President of the Turkish Red Crescent (2016–2023), former IFRC Vice President for Europe & Central Asia. Researcher and author in disaster medicine, humanitarian diplomacy and global health.",
+  "eposta": "kerem.kinik@sbu.edu.tr",
+  "konum": "İstanbul, Türkiye",
+  "portre": "https://keremkinik.netlify.app/images/portre.jpg",
   "metrikler": {
     "yayin": 47,
     "wos_yayin": 34,
@@ -9,27 +19,17 @@
     "h_endeks_wos": 6,
     "takipci": "171B+"
   },
-  "konum": "İstanbul, Türkiye",
-  "ad": "Doç. Dr. Kerem Kınık",
-  "kisa_bio_tr": "Sağlık Bilimleri Üniversitesi Afet Tıbbı Anabilim Dalı Başkanı, Türk Kızılay 33. Genel Başkanı (2016–2023), IFRC Avrupa ve Orta Asya eski Başkan Vekili. Afet tıbbı, insani diplomasi ve küresel sağlık alanında araştırmacı ve yazar.",
-  "slogan_en": "We either find a way, or make one.",
   "sosyal": {
-    "youtube": "https://www.youtube.com/@drkeremk",
-    "facebook": "https://www.facebook.com/drkeremkinik",
-    "scholar": "https://scholar.google.com/citations?user=oV_6SJ8AAAAJ",
-    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57226397964",
-    "instagram": "https://www.instagram.com/drkeremkinik/",
-    "youtube_kanal_id": "UCm4zFWDb7Y_nLRHQMkyZAxg",
-    "yok": "https://akademik.yok.gov.tr/AkademikArama/",
     "x": "https://x.com/drkerem",
-    "wos": "https://www.webofscience.com/wos/author/record/AAT-8584-2021",
+    "youtube": "https://www.youtube.com/@drkeremk",
+    "youtube_kanal_id": "UCm4zFWDb7Y_nLRHQMkyZAxg",
+    "instagram": "https://www.instagram.com/drkeremkinik/",
+    "facebook": "https://www.facebook.com/drkeremkinik",
+    "linkedin": "https://www.linkedin.com/in/drkeremkinik/",
+    "scholar": "https://scholar.google.com/citations?user=oV_6SJ8AAAAJ",
     "orcid": "https://orcid.org/0000-0002-6913-5312",
-    "linkedin": "https://www.linkedin.com/in/drkeremkinik/"
-  },
-  "unvan_tr": "Hekim · Akademisyen · İnsani Yardım Gönüllüsü",
-  "kisa_bio_en": "Head of Disaster Medicine at the University of Health Sciences, 33rd President of the Turkish Red Crescent (2016–2023), former IFRC Vice President for Europe & Central Asia. Researcher and author in disaster medicine, humanitarian diplomacy and global health.",
-  "portre": "https://keremkinik.com/media/32glkvls/ozg06122.jpg",
-  "eposta": "kerem.kinik@sbu.edu.tr",
-  "unvan_en": "Physician · Academician · Humanitarian Volunteer",
-  "slogan_tr": "Ya bir yol buluruz, ya bir yol yaparız."
+    "wos": "https://www.webofscience.com/wos/author/record/AAT-8584-2021",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57226397964",
+    "yok": "https://akademik.yok.gov.tr/AkademikArama/"
+  }
 }
