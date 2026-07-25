@@ -1,0 +1,112 @@
+---
+import site from '../data/site.json';
+import '../styles/global.css';
+
+const { title, description, lang = 'tr', path = '/' } = Astro.props;
+
+const nav = {
+  tr: [
+    { href: '/', label: 'Ana Sayfa' },
+    { href: '/biyografi/', label: 'Biyografi' },
+    { href: '/yazilar/', label: 'Yazılar' },
+    { href: '/yayinlar/', label: 'Bilimsel Yayınlar' },
+    { href: '/videolar/', label: 'Videolar' },
+    { href: '/galeri/', label: 'Galeri' },
+    { href: '/iletisim/', label: 'İletişim' },
+  ],
+  en: [
+    { href: '/en/', label: 'Home' },
+    { href: '/en/biography/', label: 'Biography' },
+    { href: '/en/posts/', label: 'Posts' },
+    { href: '/en/publications/', label: 'Publications' },
+    { href: '/en/videos/', label: 'Videos' },
+    { href: '/en/gallery/', label: 'Gallery' },
+    { href: '/en/contact/', label: 'Contact' },
+  ],
+};
+const items = nav[lang];
+const otherLang = lang === 'tr' ? 'EN' : 'TR';
+const otherHref = lang === 'tr' ? '/en/' : '/';
+const desc = description || (lang === 'tr' ? site.kisa_bio_tr : site.kisa_bio_en);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} — Kerem Kınık` : 'Doç. Dr. Kerem Kınık'}</title>
+    <meta name="description" content={desc} />
+    <meta property="og:title" content={title || 'Doç. Dr. Kerem Kınık'} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={site.portre} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a href={lang === 'tr' ? '/' : '/en/'} class="brand">
+          <span class="mark">KK</span>
+          <span>
+            <span class="name">Kerem Kınık</span><br />
+            <span class="sub">{lang === 'tr' ? 'Doç. Dr. · İnsani Yardım' : 'Assoc. Prof. · Humanitarian'}</span>
+          </span>
+        </a>
+        <button class="menu-btn" aria-label="Menü" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+        <nav class="nav">
+          {items.map((i) => (
+            <a href={i.href} class={path === i.href ? 'active' : ''}>{i.label}</a>
+          ))}
+          <a href={otherHref} class="lang-switch">{otherLang}</a>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <h4>Doç. Dr. Kerem Kınık</h4>
+            <p style="font-size:.9rem; max-width:340px;">
+              {lang === 'tr' ? site.kisa_bio_tr : site.kisa_bio_en}
+            </p>
+            <div class="foot-social">
+              <a href={site.sosyal.x} title="X" target="_blank" rel="noopener">𝕏</a>
+              <a href={site.sosyal.youtube} title="YouTube" target="_blank" rel="noopener">▶</a>
+              <a href={site.sosyal.instagram} title="Instagram" target="_blank" rel="noopener">◎</a>
+              <a href={site.sosyal.facebook} title="Facebook" target="_blank" rel="noopener">f</a>
+              <a href={site.sosyal.linkedin} title="LinkedIn" target="_blank" rel="noopener">in</a>
+            </div>
+          </div>
+          <div>
+            <h4>{lang === 'tr' ? 'Site' : 'Site'}</h4>
+            <ul>
+              {items.map((i) => (
+                <li><a href={i.href}>{i.label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>{lang === 'tr' ? 'Akademik Profiller' : 'Academic Profiles'}</h4>
+            <ul>
+              <li><a href={site.sosyal.orcid} target="_blank" rel="noopener">ORCID</a></li>
+              <li><a href={site.sosyal.wos} target="_blank" rel="noopener">Web of Science</a></li>
+              <li><a href={site.sosyal.scopus} target="_blank" rel="noopener">Scopus</a></li>
+              <li><a href={site.sosyal.yok} target="_blank" rel="noopener">YÖK Akademik</a></li>
+              <li><a href="https://www.sbu.edu.tr" target="_blank" rel="noopener">Sağlık Bilimleri Üniversitesi</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <span>© {new Date().getFullYear()} Kerem Kınık. {lang === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}</span>
+          <span><em>{lang === 'tr' ? site.slogan_tr : site.slogan_en}</em></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
