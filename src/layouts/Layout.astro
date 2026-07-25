@@ -44,6 +44,12 @@ const desc = description || (lang === 'tr' ? site.kisa_bio_tr : site.kisa_bio_en
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      // Netlify Identity davet/kurtarma bağlantılarını yönetim paneline yönlendir
+      if (window.location.hash && /invite_token|recovery_token|confirmation_token/.test(window.location.hash)) {
+        window.location.replace('/admin/' + window.location.hash);
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
