@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import galeri from '../data/galeri.json';
+---
+<Layout lang="tr" path="/galeri/" title="Galeri">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / Galeri</p>
+      <h1>Fotoğraf Galerisi</h1>
+      <p>Sahadan, kongrelerden ve insani yardım operasyonlarından kareler.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="masonry">
+        {galeri.fotograflar.map((f) => (
+          <figure>
+            <img src={f.gorsel} alt={f.baslik_tr} loading="lazy" />
+            <figcaption>{f.baslik_tr}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

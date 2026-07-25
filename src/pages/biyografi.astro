@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+---
+<Layout lang="tr" path="/biyografi/" title="Biyografi">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / Biyografi</p>
+      <h1>Biyografi</h1>
+      <p>Tıptan insani diplomasiye, sahadan akademiye uzanan bir yaşam.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-2" style="align-items:start;">
+        <div class="prose" style="margin:0;">
+          <p><strong>Doç. Dr. Kerem Kınık</strong>, 1970 yılında Malatya'da doğdu. 1993'te İstanbul Üniversitesi İstanbul Tıp Fakültesi'nden mezun oldu; Bezmialem Vakıf Üniversitesi'nde Afet Tıbbı alanında doktorasını tamamladı. Halen Sağlık Bilimleri Üniversitesi'nde Acil Yardım ve Afet Yönetimi ile Afet Tıbbı Anabilim Dalı Başkanı olarak görev yapmaktadır.</p>
+          <p>Sağlık Bakanlığı ve İstanbul Büyükşehir Belediyesi'nde yöneticilik yaptı; İstanbul İl Genel Meclisi üyeliği ve Sağlık Komisyonu Başkanlığı görevlerinde bulundu. Avrupa Bölgeler Asamblesi (AER) Sosyal Politika ve Halk Sağlığı Komitesi'nde İstanbul'u temsil etti.</p>
+          <p>İnsani yardım yolculuğu öğrencilik yıllarında gönüllülükle başladı. 1999 Kosova Savaşı ve Marmara Depremi'nde gönüllü hekim olarak görev aldı. Yeryüzü Doktorları (Doctors Worldwide Türkiye) Başkanı olarak Demokratik Kongo, Somali, Filistin, Orta Afrika Cumhuriyeti, Nijer, Kenya, Yemen, Sudan, Pakistan ve Uganda dahil pek çok kriz bölgesinde insani yardım operasyonları yönetti.</p>
+          <p>2004'te gönüllü olarak katıldığı Türk Kızılay'da 2015'te Genel Başkan Vekilliği'ne, 2016'da 33. Genel Başkanlığa seçildi ve 2023'e kadar bu görevi sürdürdü. Başkanlığı döneminde kurumun yönetişim, strateji ve uluslararasılaşma alanlarında kapsamlı bir dönüşüme öncülük etti.</p>
+          <p>2017'de Antalya'da düzenlenen 21. Genel Kurul'da Uluslararası Kızılhaç ve Kızılay Dernekleri Federasyonu (IFRC) Avrupa ve Orta Asya Başkan Vekilliği'ne seçildi (2017–2022). Ayrıca bağımlılıkla mücadele alanında Yeşilay Yönetim Kurulu üyeliği ve Yeşilay Vakfı Mütevelli Heyeti üyeliği görevlerini yürütmektedir.</p>
+          <p>Afet tıbbı, insani yardım, göç politikaları, kalkınma, insancıl hukuk ve insani diplomasi alanlarında çok sayıda kitap bölümü ve makale kaleme aldı. Beste ve güfteleriyle amatör bir müzisyen olan Kınık, İngilizce ve orta düzeyde Arapça bilmektedir. Üç çocuk babası, dört torun dedesidir.</p>
+        </div>
+        <div>
+          <img src={site.portre} alt="Doç. Dr. Kerem Kınık" style="border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 40px;" />
+          <div class="timeline">
+            <div class="item">
+              <span class="years">2024 – Devam</span>
+              <h3>Doktora (Halk Sağlığı)</h3>
+              <p>Sağlık Bilimleri Üniversitesi</p>
+            </div>
+            <div class="item">
+              <span class="years">2017 – Devam</span>
+              <h3>Anabilim Dalı Başkanı</h3>
+              <p>SBÜ — Acil Yardım ve Afet Yönetimi & Afet Tıbbı</p>
+            </div>
+            <div class="item">
+              <span class="years">2016 – 2023</span>
+              <h3>Genel Başkan, Türk Kızılay</h3>
+              <p>Hilal-i Ahmer'in 33. Umum Reisi</p>
+            </div>
+            <div class="item">
+              <span class="years">2017 – 2022</span>
+              <h3>Başkan Vekili, IFRC</h3>
+              <p>Avrupa ve Orta Asya — Cenevre</p>
+            </div>
+            <div class="item">
+              <span class="years">2015 – 2019</span>
+              <h3>Doktora (Afet Tıbbı)</h3>
+              <p>Bezmialem Vakıf Üniversitesi</p>
+            </div>
+            <div class="item">
+              <span class="years">2013 – Devam</span>
+              <h3>Mütevelli Heyeti Üyesi, Yeşilay Vakfı</h3>
+              <p>Bağımlılıkla mücadele ve koruyucu halk sağlığı</p>
+            </div>
+            <div class="item">
+              <span class="years">2001 – Devam</span>
+              <h3>Yeryüzü Doktorları</h3>
+              <p>Kurucu Başkan ve gönüllü hekim — 30+ ülkede insani misyon</p>
+            </div>
+            <div class="item">
+              <span class="years">1987 – 1993</span>
+              <h3>Tıp Doktoru</h3>
+              <p>İstanbul Üniversitesi İstanbul Tıp Fakültesi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

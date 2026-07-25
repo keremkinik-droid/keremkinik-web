@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+import galeri from '../data/galeri.json';
+import { getPosts, KATEGORILER, fmtDate } from '../lib/posts.js';
+import { getLatestVideos } from '../lib/youtube.js';
+
+const posts = getPosts().slice(0, 3);
+const videos = await getLatestVideos(3);
+const fotolar = galeri.fotograflar.slice(0, 6);
+---
+<Layout lang="tr" path="/" title="Ana Sayfa">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Hekim · Akademisyen · İnsani Yardım Lideri</p>
+        <h1>Doç. Dr.<br />Kerem Kınık</h1>
+        <p class="titles">{site.kisa_bio_tr}</p>
+        <p class="slogan">“{site.slogan_tr}”</p>
+        <div class="cta">
+          <a href="/biyografi/" class="btn btn-red">Biyografi</a>
+          <a href="/yayinlar/" class="btn btn-ghost">Bilimsel Yayınlar</a>
+          <a href="/iletisim/" class="btn btn-ghost">İletişim</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src={site.portre} alt="Doç. Dr. Kerem Kınık" loading="eager" />
+        <div class="badge">Türk Kızılay <span>33. Genel Başkanı</span> (2016–2023)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics">
+    <div class="wrap">
+      <div><div class="num">{site.metrikler.yayin}</div><div class="lbl">Bilimsel Yayın</div></div>
+      <div><div class="num">{site.metrikler.atif}+</div><div class="lbl">Atıf (WoS)</div></div>
+      <div><div class="num">{site.metrikler.h_endeks}</div><div class="lbl">H-Endeksi</div></div>
+      <div><div class="num">30+</div><div class="lbl">Ülkede İnsani Misyon</div></div>
+      <div><div class="num">{site.metrikler.takipci}</div><div class="lbl">Sosyal Medya Takipçisi</div></div>
+    </div>
+  </section>
+
+  <!-- LATEST WRITINGS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Son Yazılar<span class="dot">.</span></h2>
+        <a class="more" href="/yazilar/">Tümünü Gör →</a>
+      </div>
+      <div class="grid-3">
+        {posts.map((p) => (
+          <article class="card">
+            {p.kapak && <img class="thumb" src={p.kapak} alt={p.baslik} loading="lazy" />}
+            <div class="body">
+              <span class="tag">{KATEGORILER.tr[p.kategori] || 'Yazı'}</span>
+              <h3><a href={`/yazilar/${p.slug}/`}>{p.baslik}</a></h3>
+              <p class="excerpt">{p.ozet}</p>
+              <span class="meta">{fmtDate(p.tarih)}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Videolar<span class="dot">.</span></h2>
+        <a class="more" href="/videolar/">Tüm Videolar →</a>
+      </div>
+      <p class="sec-sub">YouTube kanalımdan son yayınlar — kanal içeriği otomatik olarak güncellenir.</p>
+      <div class="video-grid">
+        {videos.length > 0 ? videos.map((v) => (
+          <div>
+            <iframe class="video-frame" src={`https://www.youtube.com/embed/${v.id}`} title={v.title} loading="lazy" allowfullscreen></iframe>
+            <p style="font-weight:600; font-size:.92rem; margin-top:10px;">{v.title}</p>
+          </div>
+        )) : (
+          <iframe class="video-frame" style="grid-column: 1 / -1;" src={`https://www.youtube.com/embed/videoseries?list=UU${site.sosyal.youtube_kanal_id.slice(2)}`} title="YouTube" loading="lazy" allowfullscreen></iframe>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Sosyal Medya<span class="dot">.</span></h2>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="social-cards" style="grid-template-columns: 1fr;">
+            <a class="social-card" href={site.sosyal.x} target="_blank" rel="noopener">
+              <span class="icon">𝕏</span>
+              <h3>X (Twitter)</h3>
+              <p>Güncel görüşler, makaleler ve saha notları</p>
+              <span class="handle">@drkerem · 171,7B takipçi</span>
+            </a>
+            <a class="social-card" href={site.sosyal.instagram} target="_blank" rel="noopener">
+              <span class="icon">◎</span>
+              <h3>Instagram</h3>
+              <p>Fotoğraflarla insani yardım ve akademik yaşam</p>
+              <span class="handle">@drkeremkinik</span>
+            </a>
+            <a class="social-card" href={site.sosyal.linkedin} target="_blank" rel="noopener">
+              <span class="icon">in</span>
+              <h3>LinkedIn</h3>
+              <p>Profesyonel ağ ve akademik paylaşımlar</p>
+              <span class="handle">drkeremkinik</span>
+            </a>
+          </div>
+        </div>
+        <div class="card" style="padding: 10px; max-height: 640px; overflow: hidden;">
+          <a class="twitter-timeline" data-height="620" data-dnt="true" href="https://twitter.com/drkerem">X gönderileri yükleniyor… @drkerem</a>
+          <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Galeri<span class="dot">.</span></h2>
+        <a class="more" href="/galeri/">Tüm Fotoğraflar →</a>
+      </div>
+      <div class="masonry">
+        {fotolar.map((f) => (
+          <figure>
+            <img src={f.gorsel} alt={f.baslik_tr} loading="lazy" />
+            <figcaption>{f.baslik_tr}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

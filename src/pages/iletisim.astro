@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+---
+<Layout lang="tr" path="/iletisim/" title="İletişim">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / İletişim</p>
+      <h1>İletişim</h1>
+      <p>Akademik iş birliği, konferans daveti, medya ve diğer talepleriniz için.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Doğrudan Ulaşın</h3>
+          <div class="row">📧 <a href={`mailto:${site.eposta}`}>{site.eposta}</a></div>
+          <div class="row">📍 {site.konum}</div>
+          <div class="row">🏛 Sağlık Bilimleri Üniversitesi — Afet Tıbbı AD</div>
+          <h3 style="margin-top:28px;">Sosyal Medya</h3>
+          <div class="row">𝕏 <a href={site.sosyal.x} target="_blank" rel="noopener">@drkerem</a></div>
+          <div class="row">▶ <a href={site.sosyal.youtube} target="_blank" rel="noopener">@drkeremk</a></div>
+          <div class="row">◎ <a href={site.sosyal.instagram} target="_blank" rel="noopener">@drkeremkinik</a></div>
+          <div class="row">in <a href={site.sosyal.linkedin} target="_blank" rel="noopener">drkeremkinik</a></div>
+          <div class="row">f <a href={site.sosyal.facebook} target="_blank" rel="noopener">drkeremkinik</a></div>
+        </div>
+        <div>
+          <form class="contact" name="iletisim" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="iletisim" />
+            <p style="display:none;"><label>Doldurmayın: <input name="bot-field" /></label></p>
+            <label for="ad">Adınız Soyadınız</label>
+            <input id="ad" name="ad" type="text" required />
+            <label for="eposta">E-posta Adresiniz</label>
+            <input id="eposta" name="eposta" type="email" required />
+            <label for="konu">Konu</label>
+            <input id="konu" name="konu" type="text" required />
+            <label for="mesaj">Mesajınız</label>
+            <textarea id="mesaj" name="mesaj" rows="6" required></textarea>
+            <button type="submit" class="btn btn-red">Gönder</button>
+            <p style="font-size:.78rem; color:var(--muted); margin-top:12px;">Form, site yayına alındığında Netlify Forms üzerinden çalışır ve mesajlar e-postanıza iletilir.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

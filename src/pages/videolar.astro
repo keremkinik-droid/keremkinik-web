@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+import { getLatestVideos } from '../lib/youtube.js';
+const videos = await getLatestVideos(12);
+const uploadsList = 'UU' + site.sosyal.youtube_kanal_id.slice(2);
+---
+<Layout lang="tr" path="/videolar/" title="Videolar">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / Videolar</p>
+      <h1>Videolar</h1>
+      <p>Konuşmalar, röportajlar ve saha görüntüleri. Bu sayfa YouTube kanalımdan otomatik olarak beslenir.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      {videos.length > 0 ? (
+        <div class="video-grid">
+          {videos.map((v) => (
+            <div>
+              <iframe class="video-frame" src={`https://www.youtube.com/embed/${v.id}`} title={v.title} loading="lazy" allowfullscreen></iframe>
+              <p style="font-weight:600; font-size:.92rem; margin-top:10px;">{v.title}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <iframe class="video-frame" src={`https://www.youtube.com/embed/videoseries?list=${uploadsList}`} title="YouTube kanalı" loading="lazy" allowfullscreen></iframe>
+      )}
+      <div style="text-align:center; margin-top: 40px;">
+        <a class="btn btn-red" href={site.sosyal.youtube} target="_blank" rel="noopener">YouTube Kanalına Git ▶</a>
+      </div>
+    </div>
+  </section>
+</Layout>

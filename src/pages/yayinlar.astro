@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+import data from '../data/yayinlar.json';
+const yayinlar = [...data.yayinlar].sort((a, b) => b.yil - a.yil);
+---
+<Layout lang="tr" path="/yayinlar/" title="Bilimsel Yayınlar">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs">Ana Sayfa / Bilimsel Yayınlar</p>
+      <h1>Bilimsel Yayınlar</h1>
+      <p>Afet tıbbı, halk sağlığı, insani diplomasi ve transfüzyon tıbbı alanlarında hakemli dergilerde yayımlanmış çalışmalar.</p>
+    </div>
+  </div>
+
+  <section class="metrics">
+    <div class="wrap">
+      <div><div class="num">{site.metrikler.yayin}</div><div class="lbl">Toplam Yayın (ORCID)</div></div>
+      <div><div class="num">{site.metrikler.wos_yayin}</div><div class="lbl">WoS Core Collection</div></div>
+      <div><div class="num">{site.metrikler.atif}</div><div class="lbl">Toplam Atıf</div></div>
+      <div><div class="num">{site.metrikler.h_endeks}</div><div class="lbl">H-Endeksi</div></div>
+      <div><div class="num">216</div><div class="lbl">Atıf Yapan Makale</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-sub" style="margin-top:0;">
+        Güncel ve tam liste için:
+        <a href={site.sosyal.orcid} target="_blank" rel="noopener"><strong>ORCID</strong></a> ·
+        <a href={site.sosyal.wos} target="_blank" rel="noopener"><strong>Web of Science</strong></a> ·
+        <a href={site.sosyal.scopus} target="_blank" rel="noopener"><strong>Scopus</strong></a> ·
+        <a href={site.sosyal.yok} target="_blank" rel="noopener"><strong>YÖK Akademik</strong></a>
+      </p>
+      <div class="pub-list">
+        {yayinlar.map((y) => (
+          <div class="pub">
+            <div class="year">{y.yil}</div>
+            <div>
+              <h3>{y.baslik}</h3>
+              <p class="journal">{y.dergi} — {y.tur}</p>
+              <p class="authors">{y.yazarlar}</p>
+            </div>
+            {y.doi && <a class="doi" href={`https://doi.org/${y.doi}`} target="_blank" rel="noopener">DOI ↗</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
