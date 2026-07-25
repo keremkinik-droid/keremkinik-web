@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Haftalık otomatik yeniden derleme için Netlify panelinden
+# "Build hooks" oluşturup bir zamanlayıcıya bağlayabilirsiniz —
+# böylece YouTube video akışı içerik girmeseniz de tazelenir.
