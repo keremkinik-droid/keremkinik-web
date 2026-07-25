@@ -12,8 +12,11 @@
   "metrikler": {
     "yayin": 47,
     "wos_yayin": 34,
-    "atif": 226,
-    "h_endeks": 6,
+    "atif": 667,
+    "h_endeks": 10,
+    "i10_endeks": 11,
+    "atif_wos": 226,
+    "h_endeks_wos": 6,
     "takipci": "171B+"
   },
   "sosyal": {
@@ -23,6 +26,7 @@
     "instagram": "https://www.instagram.com/drkeremkinik/",
     "facebook": "https://www.facebook.com/drkeremkinik",
     "linkedin": "https://www.linkedin.com/in/drkeremkinik/",
+    "scholar": "https://scholar.google.com/citations?user=oV_6SJ8AAAAJ",
     "orcid": "https://orcid.org/0000-0002-6913-5312",
     "wos": "https://www.webofscience.com/wos/author/record/AAT-8584-2021",
     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57226397964",
