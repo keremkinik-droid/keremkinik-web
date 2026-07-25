@@ -16,10 +16,10 @@ const yayinlar = [...data.yayinlar].sort((a, b) => b.yil - a.yil);
   <section class="metrics">
     <div class="wrap">
       <div><div class="num">{site.metrikler.yayin}</div><div class="lbl">Total Works (ORCID)</div></div>
-      <div><div class="num">{site.metrikler.wos_yayin}</div><div class="lbl">WoS Core Collection</div></div>
-      <div><div class="num">{site.metrikler.atif}</div><div class="lbl">Citations</div></div>
-      <div><div class="num">{site.metrikler.h_endeks}</div><div class="lbl">H-Index</div></div>
-      <div><div class="num">216</div><div class="lbl">Citing Articles</div></div>
+      <div><div class="num">{site.metrikler.atif}</div><div class="lbl">Citations (Google Scholar)</div></div>
+      <div><div class="num">{site.metrikler.h_endeks}</div><div class="lbl">H-Index (Scholar)</div></div>
+      <div><div class="num">{site.metrikler.atif_wos}</div><div class="lbl">Citations (WoS)</div></div>
+      <div><div class="num">{site.metrikler.h_endeks_wos}</div><div class="lbl">H-Index (WoS)</div></div>
     </div>
   </section>
 
@@ -27,6 +27,7 @@ const yayinlar = [...data.yayinlar].sort((a, b) => b.yil - a.yil);
     <div class="wrap">
       <p class="sec-sub" style="margin-top:0;">
         For the complete and up-to-date record:
+        <a href={site.sosyal.scholar} target="_blank" rel="noopener"><strong>Google Scholar</strong></a> ·
         <a href={site.sosyal.orcid} target="_blank" rel="noopener"><strong>ORCID</strong></a> ·
         <a href={site.sosyal.wos} target="_blank" rel="noopener"><strong>Web of Science</strong></a> ·
         <a href={site.sosyal.scopus} target="_blank" rel="noopener"><strong>Scopus</strong></a>
